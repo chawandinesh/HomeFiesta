@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   Image,
   ScrollView,
+  SafeAreaView,
   FlatList,
 } from 'react-native';
 import {useIsFocused} from '@react-navigation/native'
@@ -35,6 +36,7 @@ export function ShowData(props) {
     props.navigation.navigate('AddDetails', {category, data,index})
   }
   return (
+    <SafeAreaView>
     <ImageBackground
       source={require('../assets/bg6.jpg')}
       style={{flex: 1, marginTop: 0}}>
@@ -244,5 +246,6 @@ export function ShowData(props) {
         </View>
       </View>
     </ImageBackground>
+    </SafeAreaView>
   );
 }

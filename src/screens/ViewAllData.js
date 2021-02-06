@@ -6,6 +6,7 @@ import {
   Dimensions,
   TouchableOpacity,
   Image,
+  SafeAreaView,
   ScrollView,
   FlatList,
 } from 'react-native';
@@ -22,6 +23,7 @@ export function ViewAllData(props) {
     getInitialData();
   }, [props, isFocused]);
   return (
+    <SafeAreaView>
     <ImageBackground
       source={require('../assets/bg6.jpg')}
       style={{flex: 1, marginTop: 0}}>
@@ -231,5 +233,6 @@ export function ViewAllData(props) {
         </View>
       </View>
     </ImageBackground>
+    </SafeAreaView>
   );
 }

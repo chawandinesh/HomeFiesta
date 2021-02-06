@@ -5,6 +5,7 @@ import {
   ImageBackground,
   Dimensions,
   TouchableOpacity,
+  SafeAreaView,
   TextInput,
   Image,
   FlatList,
@@ -80,6 +81,7 @@ export function AddDetails(props) {
     props.navigation.goBack()
   };
   return (
+    <SafeAreaView>
     <ImageBackground
       resizeMode="stretch"
       source={require('../assets/bg5.jpg')}
@@ -315,6 +317,7 @@ export function AddDetails(props) {
         onCancel={hideDatePicker}
       />
     </ImageBackground>
+    </SafeAreaView>
   );
 }
 

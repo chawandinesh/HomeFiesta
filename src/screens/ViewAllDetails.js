@@ -5,6 +5,7 @@ import {
   ImageBackground,
   Dimensions,
   TouchableOpacity,
+  SafeAreaView,
   FlatList,
 } from 'react-native';
 import {Header, Icon} from 'react-native-elements';
@@ -98,6 +99,7 @@ export function ViewAllDetails(props) {
     );
   };
   return (
+    <SafeAreaView>
     <ImageBackground
       source={require('../assets/bg6.jpg')}
       style={{flex: 1, marginTop: 0}}>
@@ -161,5 +163,6 @@ export function ViewAllDetails(props) {
         )}
       </View>
     </ImageBackground>
+    </SafeAreaView>
   );
 }

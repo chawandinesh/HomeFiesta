@@ -7,6 +7,7 @@ import {
   Image,
   Modal,
   StyleSheet,
+  StatusBar,
   TouchableOpacity,
 } from 'react-native';
 import {Divider, Rating, AirbnbRating} from 'react-native-elements';
@@ -16,6 +17,7 @@ export function HomeScreen(props) {
   const [modalVisible, setModalVisible] = React.useState(false);
   return (
     <ImageBackground source={require('../assets/bg4.jpg')} style={{flex: 1}}>
+      <StatusBar barStyle="light-content"/>
       <View style={{flex: 1}}>
         <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
           <View

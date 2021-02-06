@@ -3,6 +3,7 @@ import {
   View,
   Text,
   ImageBackground,
+  SafeAreaView,
   Dimensions,
   TouchableOpacity,
   FlatList,
@@ -115,6 +116,7 @@ export function Details(props) {
     );
   };
   return (
+    <SafeAreaView>
     <ImageBackground
       source={require('../assets/bg6.jpg')}
       style={{flex: 1, marginTop: 0}}>
@@ -187,5 +189,6 @@ export function Details(props) {
         )}
       </View>
     </ImageBackground>
+    </SafeAreaView>
   );
 }

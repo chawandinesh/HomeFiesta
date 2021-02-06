@@ -5,12 +5,14 @@ import {
   ImageBackground,
   Dimensions,
   TouchableOpacity,
+  SafeAreaView,
 } from 'react-native';
 import {Icon} from 'react-native-elements';
 
 const {height, width} = Dimensions.get('window');
 export function AboutUs(props) {
   return (
+    <SafeAreaView style={{flex:1}}>
     <ImageBackground source={require('../assets/bg4.jpg')} style={{flex: 1}}>
       <View style={{flex: 1}}>
         <View
@@ -97,5 +99,6 @@ export function AboutUs(props) {
         </View>
       </View>
     </ImageBackground>
+    </SafeAreaView>
   );
 }

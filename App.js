@@ -23,7 +23,7 @@ import AddDetails from './src/screens/AddDetails'
 import Navigator from './src/routes/navigator'
 import Context from './src/screens/context'
 const App = () => {
-  return (
+  return (  
     <Context>
       <Navigator/>
     </Context>
