@@ -126,7 +126,7 @@ export function AddDetails(props) {
             width: width * 0.8,
             borderRadius: height * 0.03,
             paddingLeft: width * 0.03,
-            marginBottom: height * 0.04,
+            marginBottom: height * 0.02,
           }}>
           <Text style={{color: 'gold'}}>Name:</Text>
           <TextInput
@@ -146,7 +146,7 @@ export function AddDetails(props) {
             width: width * 0.8,
             borderRadius: height * 0.03,
             paddingLeft: width * 0.03,
-            marginBottom: height * 0.04,
+            marginBottom: height * 0.02,
           }}>
           <Text style={{color: 'gold'}}>Date:</Text>
           <View style={styles.searchSection}>
@@ -178,7 +178,7 @@ export function AddDetails(props) {
             width: width * 0.8,
             borderRadius: height * 0.03,
             paddingLeft: width * 0.03,
-            marginBottom: height * 0.04,
+            marginBottom: height * 0.02,
           }}>
           <Text style={{color: 'gold'}}>Details:</Text>
           <TextInput
@@ -198,7 +198,7 @@ export function AddDetails(props) {
             width: width * 0.8,
             borderRadius: height * 0.03,
             paddingLeft: width * 0.03,
-            marginBottom: height * 0.04,
+            marginBottom: height * 0.02,
           }}>
           <Text style={{color: 'gold'}}>Guest Count:</Text>
           <TextInput
@@ -221,7 +221,7 @@ export function AddDetails(props) {
             width: width * 0.8,
             borderRadius: height * 0.03,
             paddingLeft: width * 0.03,
-            marginBottom: height * 0.04,
+            marginBottom: height * 0.02,
           }}>
           <Text style={{color: 'gold'}}>Special Notes:</Text>
           <TextInput
