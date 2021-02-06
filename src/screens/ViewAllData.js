@@ -23,7 +23,7 @@ export function ViewAllData(props) {
     getInitialData();
   }, [props, isFocused]);
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{flex:1}}>
     <ImageBackground
       source={require('../assets/bg6.jpg')}
       style={{flex: 1, marginTop: 0}}>

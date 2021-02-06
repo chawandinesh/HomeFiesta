@@ -36,7 +36,7 @@ export function ShowData(props) {
     props.navigation.navigate('AddDetails', {category, data,index})
   }
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{flex:1}}>
     <ImageBackground
       source={require('../assets/bg6.jpg')}
       style={{flex: 1, marginTop: 0}}>

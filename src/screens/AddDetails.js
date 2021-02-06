@@ -81,7 +81,7 @@ export function AddDetails(props) {
     props.navigation.goBack()
   };
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{flex:1}}>
     <ImageBackground
       resizeMode="stretch"
       source={require('../assets/bg5.jpg')}
