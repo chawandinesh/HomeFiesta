@@ -8,12 +8,18 @@ import {
   FlatList,
 } from 'react-native';
 import {Header, Icon} from 'react-native-elements';
-
+import {useIsFocused} from '@react-navigation/native';
+import {HomeFiestaContext} from './context';
 const {height, width} = Dimensions.get('window');
 export function Details(props) {
-  const {item} = props.route.params;
-  console.log(item, 'item');
-  const renderItem = ({item}) => {
+  const {state, setState} = React.useContext(HomeFiestaContext);
+  const {category} = props.route.params;
+  const isFocused = useIsFocused();
+  const getInitialData = async () => {};
+  React.useEffect(() => {
+    getInitialData();
+  }, [props, isFocused]);
+  const renderItem = ({item, index}) => {
     return (
       <View
         style={{
@@ -56,7 +62,7 @@ export function Details(props) {
               :
             </Text>
             <Text style={{fontSize: height * 0.024, fontWeight: 'bold'}}>
-              name{item}
+              {item.name}
             </Text>
           </View>
           <View
@@ -85,13 +91,24 @@ export function Details(props) {
               :
             </Text>
             <Text style={{fontSize: height * 0.024, fontWeight: 'bold'}}>
-              date{item}
+              {item.date}
             </Text>
           </View>
         </View>
         <View>
           <TouchableOpacity>
-            <Icon name="arrowright" type="antdesign" size={height * 0.04}  onPress={() => props.navigation.navigate('ShowData', {data: item})}/>
+            <Icon
+              name="arrowright"
+              type="antdesign"
+              size={height * 0.04}
+              onPress={() => {
+                props.navigation.navigate('ShowData', {
+                  category: category,
+                  data: state[category],
+                  index: index,
+                });
+              }}
+            />
           </TouchableOpacity>
         </View>
       </View>
@@ -125,7 +142,9 @@ export function Details(props) {
         </Text>
         <TouchableOpacity>
           <Icon
-            onPress={() => props.navigation.navigate('AddDetails')}
+            onPress={() =>
+              props.navigation.navigate('AddDetails', {category: category})
+            }
             name="ios-add-circle-sharp"
             type="ionicon"
             style={{paddingHorizontal: 5}}
@@ -141,12 +160,31 @@ export function Details(props) {
           height: height * 0.9,
           marginTop: height * 0.02,
         }}>
-        <FlatList
-          showsVerticalScrollIndicator={false}
-          data={[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 123, 345, 432, 456]}
-          renderItem={renderItem}
-          keyExtractor={(item, index) => index.toString()}
-        />
+        {state[category].length ? (
+          <FlatList
+            showsVerticalScrollIndicator={false}
+            data={state[category]}
+            renderItem={renderItem}
+            keyExtractor={(item, index) => index.toString()}
+          />
+        ) : (
+          <View
+            style={{
+              borderWidth: 2,
+              borderColor: 'gold',
+              padding: height * 0.02,
+            }}>
+            <Text
+              style={{
+                fontSize: height * 0.03,
+                fontWeight: 'bold',
+                color: '#fff',
+                textAlign: 'center',
+              }}>
+              No data Found , Please click on + to add data
+            </Text>
+          </View>
+        )}
       </View>
     </ImageBackground>
   );

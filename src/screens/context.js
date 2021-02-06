@@ -12,9 +12,9 @@ const initialData = {
 }
 export const HomeFiestaContext = React.createContext(null)
 export default function Context(props) {
-    const [state, setstate] = React.useState(initialData)
+    const [state, setState] = React.useState(initialData)
     return (
-        <HomeFiestaContext.Provider value={{state,setstate}}>
+        <HomeFiestaContext.Provider value={{state,setState}}>
             {props.children}
         </HomeFiestaContext.Provider>
     )

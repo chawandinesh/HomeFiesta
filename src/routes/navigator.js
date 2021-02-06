@@ -9,6 +9,8 @@ import {
   HomeScreen,
   ShowData,
   ViewAllDetails,
+  ViewAllData,
+  AboutUs
 } from '../screens';
 
 const Stack = createStackNavigator();
@@ -22,6 +24,8 @@ export default function navigator() {
         <Stack.Screen name="Details" component={Details} />
         <Stack.Screen name="ShowData" component={ShowData} />
         <Stack.Screen name="ViewAllDetails" component={ViewAllDetails} />
+        <Stack.Screen name="ViewAllData" component={ViewAllData} />
+        <Stack.Screen name="AboutUs" component={AboutUs}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -8,25 +8,30 @@ import {
   FlatList,
 } from 'react-native';
 import {Header, Icon} from 'react-native-elements';
-
+import {HomeFiestaContext} from './context'
 const {height, width} = Dimensions.get('window');
 export function Categories(props) {
+  const {state,setState} = React.useContext(HomeFiestaContext)
   const renderItem = ({item}) => {
     return (
       <TouchableOpacity
-        onPress={() => props.navigation.navigate('Details', {item: item})}
+        onPress={() => props.navigation.navigate('Details', {category: item})}
         style={{
           height: height * 0.16,
           backgroundColor: '#f7e9c3',
           marginBottom: height * 0.02,
-          borderRadius: height * 0.05,
-          borderWidth: 2,
+          // borderRadius: height * 0.05,
+          borderTopRightRadius: height * 0.04,
+          borderBottomLeftRadius: height * 0.04,
+          // borderWidth: 2,
+          borderWidth: 10,
           borderColor: 'gold',
           justifyContent: 'center',
           alignItems: 'center',
         }}>
         <Text style={{fontWeight: 'bold', fontSize: height * 0.03}}>
-          Category{item}
+          {/* Category{item} */}
+          {item}
         </Text>
       </TouchableOpacity>
     );
@@ -69,7 +74,7 @@ export function Categories(props) {
         }}>
         <FlatList
           showsVerticalScrollIndicator={false}
-          data={[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 123, 345, 432, 456]}
+          data={Object.keys(state).sort()}
           renderItem={renderItem}
           keyExtractor={(item, index) => index.toString()}
         />

@@ -18,9 +18,11 @@ import moment from 'moment';
 
 // import DatePicker from 'react-native-date-picker'
 import DatePicker from '../components/DatePIcker';
-
+import {HomeFiestaContext} from '../screens/context'
 const {height, width} = Dimensions.get('window');
 export function AddDetails(props) {
+  const {category, data,index} = props.route.params
+  const {state, setState} = React.useContext(HomeFiestaContext)
   const [formState, setFormState] = React.useState({
     name: '',
     date: '',
@@ -31,6 +33,13 @@ export function AddDetails(props) {
   });
 
   const [isDatePickerVisible, setDatePickerVisibility] = React.useState(false);
+
+
+  React.useEffect(() => {
+    if(data) {
+      setFormState(data[index])
+    }
+  },[])
 
   const showDatePicker = () => {
     setDatePickerVisibility(true);
@@ -61,7 +70,14 @@ export function AddDetails(props) {
   };
 
   const handleSubmit = () => {
-    console.log(formState, 'formfields');
+    if(data){
+       [...state[category].splice(index,1,formState)]
+       setState(state)
+    }else{
+      setState({...state, [category]: [...state[category], formState]})
+
+    }
+    props.navigation.goBack()
   };
   return (
     <ImageBackground

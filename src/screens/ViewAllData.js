@@ -14,26 +14,13 @@ import {Header, Icon} from 'react-native-elements';
 import {TouchableHighlight} from 'react-native-gesture-handler';
 import {HomeFiestaContext} from './context';
 const {height, width} = Dimensions.get('window');
-export function ShowData(props) {
-  const {category, data, index} = props.route.params;
-  const {state,setState} = React.useContext(HomeFiestaContext)
+export function ViewAllData(props) {
+  const {data} = props.route.params;
   const isFocused = useIsFocused();
   const getInitialData = async () => {};
   React.useEffect(() => {
     getInitialData();
   }, [props, isFocused]);
-  const dataItems = data[index];
-  const handleRemove = () => {
-    setState({
-      ...state,
-      [category]: state[category].filter((e, idx) => idx !== index),
-    });
-    props.navigation.goBack()
-  }
-
-  const handleUpdate = () => {
-    props.navigation.navigate('AddDetails', {category, data,index})
-  }
   return (
     <ImageBackground
       source={require('../assets/bg6.jpg')}
@@ -58,9 +45,9 @@ export function ShowData(props) {
           />
         </TouchableOpacity>
         <Text style={{fontWeight: 'bold', fontSize: height * 0.03}}>
-          View Details
+          View All Details
         </Text>
-        <TouchableOpacity></TouchableOpacity>
+        <Text></Text>
       </View>
       <View
         style={{
@@ -82,7 +69,7 @@ export function ShowData(props) {
             borderTopLeftRadius: height * 0.05,
             alignItems: 'center',
           }}>
-          <TouchableOpacity
+          {/* <TouchableOpacity
             onPress={() => handleUpdate()}
             style={{position: 'absolute', bottom: 10, left: 10}}>
             <Icon name="create" type="ionicon" color="black" raised />
@@ -91,7 +78,7 @@ export function ShowData(props) {
              onPress={() => handleRemove()}
             style={{position: 'absolute', bottom: 10, right: 10}}>
             <Icon name="trash" type="ionicon" color="darkred" raised />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
           <View style={{borderBottomWidth: 2, width: width * 0.7}}>
             <Text
               style={{
@@ -100,7 +87,7 @@ export function ShowData(props) {
                 fontWeight: 'bold',
                 textAlign: 'center',
               }}>
-              {category}
+              {/* {category} */}
             </Text>
           </View>
           <View
@@ -118,7 +105,7 @@ export function ShowData(props) {
             </View>
             <View>
               <Text style={{fontSize: height * 0.03, fontWeight: 'bold'}}>
-                {dataItems.name ? dataItems.name : null}
+                {data.name ? data.name : null}
               </Text>
             </View>
           </View>
@@ -138,7 +125,7 @@ export function ShowData(props) {
             </View>
             <View>
               <Text style={{fontSize: height * 0.03, fontWeight: 'bold'}}>
-                {dataItems.date ? dataItems.date : null}
+                {data.date ? data.date : null}
               </Text>
             </View>
           </View>
@@ -158,7 +145,7 @@ export function ShowData(props) {
             </View>
             <View>
               <Text style={{fontSize: height * 0.03, fontWeight: 'bold'}}>
-                {dataItems.guestCount ? dataItems.guestCount : null}
+                {data.guestCount ? data.guestCount : null}
               </Text>
             </View>
           </View>
@@ -178,7 +165,7 @@ export function ShowData(props) {
             </View>
             <View>
               <Text style={{fontSize: height * 0.03, fontWeight: 'bold'}}>
-                {dataItems.details ? dataItems.details : null}
+                {data.details ? data.details : null}
               </Text>
             </View>
           </View>
@@ -203,13 +190,13 @@ export function ShowData(props) {
                 marginLeft: width * 0.05,
               }}>
               <Text style={{fontSize: height * 0.02}}>
-                {dataItems.specialNotes ? dataItems.specialNotes : null}
+                {data.specialNotes ? data.specialNotes : null}
               </Text>
             </ScrollView>
           </View>
 
           <View>
-            {dataItems.image ? (
+            {data.image ? (
               <View
                 style={{
                   width: width * 0.3,
@@ -221,7 +208,7 @@ export function ShowData(props) {
                   marginTop: height * 0.07,
                 }}>
                 <Image
-                  source={{uri: dataItems.image}}
+                  source={{uri: data.image}}
                   resizeMode="stretch"
                   style={{width: width * 0.29, height: width * 0.29}}
                 />

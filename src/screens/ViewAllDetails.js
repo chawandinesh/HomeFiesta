@@ -8,11 +8,11 @@ import {
   FlatList,
 } from 'react-native';
 import {Header, Icon} from 'react-native-elements';
+import {HomeFiestaContext} from './context'
 
 const {height, width} = Dimensions.get('window');
 export function ViewAllDetails(props) {
-  const {item} = props.route.params;
-  console.log(item, 'item');
+  const {state,setState} = React.useContext(HomeFiestaContext)
   const renderItem = ({item}) => {
     return (
       <View
@@ -56,7 +56,7 @@ export function ViewAllDetails(props) {
               :
             </Text>
             <Text style={{fontSize: height * 0.024, fontWeight: 'bold'}}>
-              Hello{item}
+              {item.name}
             </Text>
           </View>
           <View
@@ -85,13 +85,13 @@ export function ViewAllDetails(props) {
               :
             </Text>
             <Text style={{fontSize: height * 0.024, fontWeight: 'bold'}}>
-              Hello{item}
+              {item.date}
             </Text>
           </View>
         </View>
         <View>
           <TouchableOpacity>
-            <Icon name="arrowright" type="antdesign" size={height * 0.04}  onPress={() => props.navigation.navigate('ShowData', {data: item})}/>
+            <Icon name="arrowright" type="antdesign" size={height * 0.04}  onPress={() => props.navigation.navigate('ViewAllData', {data: item})}/>
           </TouchableOpacity>
         </View>
       </View>
@@ -121,16 +121,9 @@ export function ViewAllDetails(props) {
           />
         </TouchableOpacity>
         <Text style={{fontWeight: 'bold', fontSize: height * 0.03}}>
-          Details
+          All Details
         </Text>
         <TouchableOpacity>
-          <Icon
-            onPress={() => props.navigation.navigate('AddDetails')}
-            name="ios-add-circle-sharp"
-            type="ionicon"
-            style={{paddingHorizontal: 5}}
-            size={height * 0.04}
-          />
         </TouchableOpacity>
       </View>
       <View
@@ -140,13 +133,32 @@ export function ViewAllDetails(props) {
           alignSelf: 'center',
           height: height * 0.9,
           marginTop: height * 0.02,
-        }}>
-        <FlatList
-          showsVerticalScrollIndicator={false}
-          data={[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 123, 345, 432, 456]}
-          renderItem={renderItem}
-          keyExtractor={(item, index) => index.toString()}
-        />
+        }}>  
+         {Object.values(state).flat().length ? (
+          <FlatList
+            showsVerticalScrollIndicator={false}
+            data={Object.values(state).flat()}
+            renderItem={renderItem}
+            keyExtractor={(item, index) => index.toString()}
+          />
+        ) : (
+          <View
+            style={{
+              borderWidth: 2,
+              borderColor: 'gold',
+              padding: height * 0.02,
+            }}>
+            <Text
+              style={{
+                fontSize: height * 0.03,
+                fontWeight: 'bold',
+                color: '#fff',
+                textAlign: 'center',
+              }}>
+              No data Found , Please click on + in categories page to add data
+            </Text>
+          </View>
+        )}
       </View>
     </ImageBackground>
   );
